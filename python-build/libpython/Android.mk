@@ -2,6 +2,10 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
+# required because recent ndks turn on a warning-as-error option for
+# printf format strings
+LOCAL_CFLAGS := -w
+
 PYTHON_SRC_PATH := $(LOCAL_PATH)/../python-src
 LOCAL_C_INCLUDES := $(PYTHON_SRC_PATH) $(PYTHON_SRC_PATH)/Include
 LOCAL_PATH := $(PYTHON_SRC_PATH)
@@ -127,3 +131,4 @@ $(call __ndk_info, INCLUDES: $(LOCAL_C_INCLUDES))
 $(call __ndk_info, EXPORT: $(LOCAL_EXPORT_C_INCLUDES))
 
 include $(BUILD_SHARED_LIBRARY)
+
