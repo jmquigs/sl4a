@@ -75,7 +75,9 @@ pushd ${CWD}/python
 ${CWD}/host/pgen ${CWD}/python-src/Grammar/Grammar \
 	${CWD}/python-src/Include/graminit.h \
 	${CWD}/python-src/Python/graminit.c
+#V=1 #uncomment to show verbose ndk-build commands
 ndk-build
+
 # copy out all the needed files
 mv obj/local/armeabi/python	${OUT}/usr/bin
 mv obj/local/armeabi/lib*.so	${OUT}/usr/lib
@@ -83,6 +85,7 @@ mv obj/local/armeabi/*.so	${OUT}/usr/lib/python2.6/lib-dynload
 popd
 
 ${CWD}/host/bin/python ${OUT}/usr/lib/python2.6/compileall.py ${OUT}/usr/lib/python2.6
+echo Starting python build.py
 ${CWD}/host/bin/python build.py ${RELEASE_VERSION}
 
 if [ "$DEBUG" != "yes" ]; then
