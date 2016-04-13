@@ -69,7 +69,9 @@ def rm(path):
 
 
 def strip(path):
-  run('arm-eabi-strip %s' % path)
+  #run('arm-eabi-strip %s' % path)
+
+  run('/home/john/Android/Sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/arm-linux-androideabi/bin/strip %s' % path)
 
 
 def zipup(out_path, in_path, top, exclude=None, prefix=''):
