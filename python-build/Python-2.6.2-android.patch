@@ -565,7 +565,7 @@ diff --ignore-file-name-case -wuprN Python-2.6.2/pyconfig.h python-src//pyconfig
 +#define HAVE_FTELLO 1
 +
 +/* Define to 1 if you have the `ftime' function. */
-+#define HAVE_FTIME 1
++#undef HAVE_FTIME
 +
 +/* Define to 1 if you have the `ftruncate' function. */
 +#define HAVE_FTRUNCATE 1
@@ -1140,10 +1140,10 @@ diff --ignore-file-name-case -wuprN Python-2.6.2/pyconfig.h python-src//pyconfig
 +#define HAVE_UTIME_H 1
 +
 +/* Define to 1 if you have the `wait3' function. */
-+#define HAVE_WAIT3 1
++#undef HAVE_WAIT3
 +
 +/* Define to 1 if you have the `wait4' function. */
-+/* #undef HAVE_WAIT4 */
++#undef HAVE_WAIT4
 +
 +/* Define to 1 if you have the `waitpid' function. */
 +#define HAVE_WAITPID 1
