@@ -18,7 +18,7 @@ build-module = \
       $(eval LOCAL_LDFLAGS := $(strip $5) ) \
       $(call __ndk_info, building $(LOCAL_MODULE_FILENAME )) \
       $(call __ndk_info, SRC: $(LOCAL_SRC_FILES)) \
-      $(eval include $(BUILD_SHARED_LIBRARY) )
+      $(eval include $(BUILD_STATIC_LIBRARY) )
 
 $(call build-module,  _struct ,  Modules/_struct.c )
 $(call build-module,  _ctypes_test ,  Modules/_ctypes/_ctypes_test.c )
