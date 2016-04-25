@@ -19,6 +19,7 @@ if [ ! -d host ]; then
     # generate the correct grammar and some other stuff
     mkdir -p ${CWD}/host
     tar -xvjf ${CWD}/Python-${VERSION}.tar.bz2
+    cp Setup Python-${VERSION}/Modules
     pushd Python-${VERSION}
     ./configure --prefix=${CWD}/host/
     make
