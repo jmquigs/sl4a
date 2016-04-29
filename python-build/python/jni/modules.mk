@@ -77,6 +77,17 @@ $(call build-module,  _codecs_iso2022 ,  Modules/cjkcodecs/_codecs_iso2022.c )
 $(call build-module,  _multiprocessing ,  Modules/_multiprocessing/multiprocessing.c Modules/_multiprocessing/socket_connection.c Modules/_multiprocessing/semaphore.c,,-DHAVE_SEM_OPEN )
 #$(call build-module,  ossaudiodev ,  Modules/ossaudiodev.c )
 
+$(call import-module, libz)
+#$(call build-module,  zlib,  Modules/zlibmodule.c, libz )
+LOCAL_C_INCLUDES += $(PYTHON_SRC_PATH) $(PYTHON_SRC_PATH)/Include
+LOCAL_PATH := $(PYTHON_SRC_PATH)
+LOCAL_MODULE := zlib
+LOCAL_MODULE_FILENAME := zlib
+LOCAL_SRC_FILES := Modules/zlibmodule.c
+LOCAL_SHARED_LIBRARIES := libpython2.6 libz
+include $(BUILD_STATIC_LIBRARY)
+#include $(BUILD_SHARED_LIBRARY)
+
 $(call import-module, bzip2)
 LOCAL_C_INCLUDES += $(PYTHON_SRC_PATH) $(PYTHON_SRC_PATH)/Include
 LOCAL_PATH := $(PYTHON_SRC_PATH)
