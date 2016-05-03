@@ -121,12 +121,23 @@ LOCAL_SRC_FILES := \
 
 LOCAL_MODULE := python2.6
 #LOCAL_MODULE_FILENAME := 
+LOCAL_STATIC_LIBRARIES := thread signal posix errno pwd _sre _codecs zipimport \
+	_symtable array cmath math _struct time operator _weakref _testcapi \
+	_random _collections itertools strop _functools _elementtree datetime \
+	_bisect unicodedata _locale xxsubtype _ctypes future_builtins _heapq \
+	_fileio _bytesio _json _hotshot _lsprof fcntl select parser \
+	cStringIO cPickle mmap syslog audioop imageop _csv _socket \
+	_sha _md5 _sha256 _sha512 termios resource binascii _multibytecodec \
+	_codecs_kr _codecs_jp _codecs_cn _codecs_tw _codecs_hk _codecs_iso2022 \
+	_multiprocessing \
+	_sqlite3 zlib bz2 crypt pyexpat
 
 $(call __ndk_info, Building libpython2.6)
 $(call __ndk_info, PATH: $(LOCAL_PATH))
 $(call __ndk_info, MODULE: $(LOCAL_MODULE))
 $(call __ndk_info, FILENAME: $(LOCAL_MODULE_FILENAME))
 $(call __ndk_info, SRC: $(LOCAL_SRC_FILES))
+$(call __ndk_info, LOCAL_SHARED_LIBRARIES: $(LOCAL_SHARED_LIBRARIES))
 $(call __ndk_info, INCLUDES: $(LOCAL_C_INCLUDES))
 $(call __ndk_info, EXPORT: $(LOCAL_EXPORT_C_INCLUDES))
 

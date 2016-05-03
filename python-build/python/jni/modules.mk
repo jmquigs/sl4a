@@ -78,7 +78,6 @@ $(call build-module,  _multiprocessing ,  Modules/_multiprocessing/multiprocessi
 #$(call build-module,  ossaudiodev ,  Modules/ossaudiodev.c )
 
 $(call import-module, libz)
-#$(call build-module,  zlib,  Modules/zlibmodule.c, libz )
 LOCAL_C_INCLUDES += $(PYTHON_SRC_PATH) $(PYTHON_SRC_PATH)/Include
 LOCAL_PATH := $(PYTHON_SRC_PATH)
 LOCAL_MODULE := zlib
@@ -86,7 +85,6 @@ LOCAL_MODULE_FILENAME := zlib
 LOCAL_SRC_FILES := Modules/zlibmodule.c
 LOCAL_SHARED_LIBRARIES := libpython2.6 libz
 include $(BUILD_STATIC_LIBRARY)
-#include $(BUILD_SHARED_LIBRARY)
 
 $(call import-module, bzip2)
 LOCAL_C_INCLUDES += $(PYTHON_SRC_PATH) $(PYTHON_SRC_PATH)/Include
@@ -95,7 +93,7 @@ LOCAL_MODULE := bz2
 LOCAL_MODULE_FILENAME := bz2
 LOCAL_SRC_FILES := Modules/bz2module.c
 LOCAL_SHARED_LIBRARIES := libpython2.6 libbz
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)
 
 $(call import-module, libcrypt)
 LOCAL_C_INCLUDES += $(PYTHON_SRC_PATH) $(PYTHON_SRC_PATH)/Include
@@ -104,7 +102,7 @@ LOCAL_MODULE := crypt
 LOCAL_MODULE_FILENAME := crypt
 LOCAL_SRC_FILES := Modules/cryptmodule.c
 LOCAL_SHARED_LIBRARIES := libpython2.6 _crypt
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)
 
 
 $(call import-module, expat)
@@ -114,12 +112,12 @@ LOCAL_MODULE := pyexpat
 LOCAL_MODULE_FILENAME := pyexpat
 LOCAL_SRC_FILES := Modules/pyexpat.c
 LOCAL_SHARED_LIBRARIES := libpython2.6 libexpat
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)
 
 LOCAL_MODULE := _elementtree
 LOCAL_MODULE_FILENAME := _elementtree
 LOCAL_SRC_FILES := Modules/_elementtree.c
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)
 
 $(call import-module, libffi)
 LOCAL_PATH := $(PYTHON_SRC_PATH)
@@ -128,7 +126,7 @@ LOCAL_MODULE := _ctypes
 LOCAL_MODULE_FILENAME := _ctypes
 LOCAL_SRC_FILES := Modules/_ctypes/_ctypes.c Modules/_ctypes/callbacks.c Modules/_ctypes/callproc.c Modules/_ctypes/stgdict.c Modules/_ctypes/cfield.c Modules/_ctypes/malloc_closure.c 
 LOCAL_SHARED_LIBRARIES := libpython2.6 libffi
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)
 
 $(call import-module, sqlite3)
 LOCAL_PATH := $(PYTHON_SRC_PATH)
@@ -146,7 +144,7 @@ LOCAL_SRC_FILES := Modules/_sqlite/cache.c \
 	Modules/_sqlite/statement.c \
 	Modules/_sqlite/util.c
 LOCAL_SHARED_LIBRARIES := libpython2.6 libsqlite
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)
 
 #$(call import-module, pwd_grp)
 #LOCAL_PATH := $(PYTHON_SRC_PATH)
