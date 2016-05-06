@@ -95,6 +95,7 @@ extern void initzlib(void);
 extern void initbz2(void);
 extern void initcrypt(void);
 extern void initpyexpat(void);
+extern void init_ssl(void);
 
 /* -- ADDMODULE MARKER 1 -- */
 
@@ -177,7 +178,7 @@ struct _inittab _PyImport_Inittab[] = {
 	{"bz2", initbz2}, 
 	{"crypt", initcrypt}, 
 	{"pyexpat", initpyexpat},
-	
+	{"_ssl", init_ssl},
 
 /* -- ADDMODULE MARKER 2 -- */
 

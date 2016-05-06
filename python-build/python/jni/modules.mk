@@ -3,6 +3,8 @@ PYTHON_SRC_PATH := $(LOCAL_PATH)/../../python-src
 
 include $(CLEAR_VARS)
 
+OPENSSL_INCLUDE_PATH := $(LOCAL_PATH)/../../openssl/arm/include
+
 LOCAL_C_INCLUDES := $(PYTHON_SRC_PATH) $(PYTHON_SRC_PATH)/Include
 LOCAL_MODULE := python
 LOCAL_SRC_FILES := Modules/python.c
@@ -76,6 +78,14 @@ $(call build-module,  _codecs_hk ,  Modules/cjkcodecs/_codecs_hk.c )
 $(call build-module,  _codecs_iso2022 ,  Modules/cjkcodecs/_codecs_iso2022.c )
 $(call build-module,  _multiprocessing ,  Modules/_multiprocessing/multiprocessing.c Modules/_multiprocessing/socket_connection.c Modules/_multiprocessing/semaphore.c,,-DHAVE_SEM_OPEN )
 #$(call build-module,  ossaudiodev ,  Modules/ossaudiodev.c )
+
+LOCAL_C_INCLUDES += $(PYTHON_SRC_PATH) $(PYTHON_SRC_PATH)/Include $(OPENSSL_INCLUDE_PATH)
+LOCAL_PATH := $(PYTHON_SRC_PATH)
+LOCAL_MODULE := _ssl
+LOCAL_MODULE_FILENAME := _ssl
+LOCAL_SRC_FILES := Modules/_ssl.c
+LOCAL_SHARED_LIBRARIES := libpython2.6
+include $(BUILD_STATIC_LIBRARY)
 
 $(call import-module, libz)
 LOCAL_C_INCLUDES += $(PYTHON_SRC_PATH) $(PYTHON_SRC_PATH)/Include

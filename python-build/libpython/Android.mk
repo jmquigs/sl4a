@@ -6,6 +6,8 @@ include $(CLEAR_VARS)
 # printf format strings
 LOCAL_CFLAGS := -w
 
+OPENSSL_LIB_PATH := $(LOCAL_PATH)/../openssl/arm/lib
+
 PYTHON_SRC_PATH := $(LOCAL_PATH)/../python-src
 LOCAL_C_INCLUDES := $(PYTHON_SRC_PATH) $(PYTHON_SRC_PATH)/Include
 LOCAL_PATH := $(PYTHON_SRC_PATH)
@@ -130,7 +132,13 @@ LOCAL_STATIC_LIBRARIES := thread signal posix errno pwd _sre _codecs zipimport \
 	_sha _md5 _sha256 _sha512 termios resource binascii _multibytecodec \
 	_codecs_kr _codecs_jp _codecs_cn _codecs_tw _codecs_hk _codecs_iso2022 \
 	_multiprocessing \
-	_sqlite3 zlib bz2 crypt pyexpat
+	_sqlite3 zlib bz2 crypt pyexpat \
+	_ssl
+
+# order is important when libs are specified this way.  Also, this generates a build warning 
+# (supposed to use LOCAL_STATIC_LIBRARIES) but these libs are removed by ndk-build if I put them in there.
+# also note that if these libs are stripped, this will fail with undefined symbol errors
+LOCAL_LDLIBS := $(OPENSSL_LIB_PATH)/libssl.a $(OPENSSL_LIB_PATH)/libcrypto.a 
 
 $(call __ndk_info, Building libpython2.6)
 $(call __ndk_info, PATH: $(LOCAL_PATH))
